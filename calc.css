@@ -1,0 +1,62 @@
+/* select all the elemnts, including the before element and the after element */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #ff0015, #00FF6C);
+}
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    /* we want to align the content itself and not the items in the content */
+    align-content: center;
+    /* our clculator grid is not taking the full height, so we set the height to contain the screen */
+    min-height: 100vh;
+    /* set grids to columns as seen in a regular calculator */
+    grid-template-columns: repeat(4,100px);
+    /* our screen should be able to take as many inputs as possible */
+    grid-template-rows: minmax(120px, auto)repeat(5,100px);
+}
+
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, .9);   
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.output {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+.output .current-operand {
+    color: white;
+    font-size: 2.5rem;
+}
